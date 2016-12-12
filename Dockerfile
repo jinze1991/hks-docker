@@ -67,4 +67,4 @@ FROM centos:5
     
     EXPOSE 80 443 9001
 	# Default command
-	# CMD ["/bin/bash", "/start.sh"]
+	CMD ["/bin/bash", "/start.sh"]
