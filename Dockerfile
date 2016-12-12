@@ -51,14 +51,14 @@ FROM centos:5
     COPY vhost.conf /etc/httpd/conf.d/vhost.conf
     
     RUN echo "zend_extension=/usr/lib64/php/modules/xdebug.so" >> /etc/php.d/xdebug.ini
-    RUN echo "xdebug.idekey='1'" >> /etc/php.d/xdebug.ini
+    RUN echo "xdebug.idekey=1" >> /etc/php.d/xdebug.ini
+    RUN echo "xdebug.remote_autostart=1" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.auto_trace=1" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_host=localhost" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_port=9001" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_enable=1" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_connect_back = on" >> /etc/php.d/xdebug.ini
-    RUN echo "xdebug.remote_auto_start=1" >> /etc/php.d/xdebug.ini
-    RUN echo "xdebug.remote_log=/var/php/xdebug.log\n" >> /etc/php.d/xdebug.ini
+    RUN echo "xdebug.remote_log=/var/php/xdebug.log" >> /etc/php.d/xdebug.ini
     RUN echo "AddType application/x-httpd-php .html .htm" >> /etc/httpd/conf/httpd.conf
     RUN sed -i '512d' /etc/httpd/conf.d/vhost.conf
     RUN service httpd start
