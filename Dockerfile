@@ -27,7 +27,7 @@ FROM centos:5
     RUN make && make install
     RUN cp modules/geoip.so /usr/lib64/php/modules/
     
-    # install php json
+    # install php json 1.2.1
     WORKDIR /home/tmp/
     RUN wget https://pecl.php.net/get/json-1.2.1.tgz
     RUN tar xvfz json-1.2.1.tgz
@@ -36,13 +36,13 @@ FROM centos:5
     RUN ./configure
     RUN make && make install
     
-    # install xdebug 2.0
+    # install xdebug 2.1.0
     WORKDIR /home/tmp/
-    RUN wget https://xdebug.org/files/xdebug-2.0.0.tgz
-    RUN tar xvfz xdebug-2.0.0.tgz
-    WORKDIR /home/tmp/xdebug-2.0.0
+    RUN wget https://xdebug.org/files/xdebug-2.1.0.tgz
+    RUN tar xvfz xdebug-2.1.0.tgz
+    WORKDIR /home/tmp/xdebug-2.1.0
     RUN /usr/bin/phpize
-    RUN ./configure
+    RUN ./configure --enable-xdebug --with-php-config=/usr/bin/php-config
     RUN make && make install
     
     # remove tmp dir 
@@ -59,7 +59,7 @@ FROM centos:5
     RUN echo "xdebug.remote_port=9001" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_enable=1" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_connect_back = on" >> /etc/php.d/xdebug.ini
-    RUN echo "xdebug.remote_log=/var/php/xdebug.log" >> /etc/php.d/xdebug.ini
+    RUN echo "xdebug.remote_log=/var/log/httpd/error_log" >> /etc/php.d/xdebug.ini
     RUN echo "AddType application/x-httpd-php .html .htm" >> /etc/httpd/conf/httpd.conf
     RUN sed -i '512d' /etc/httpd/conf.d/vhost.conf
     RUN service httpd start

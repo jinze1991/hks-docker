@@ -3,7 +3,7 @@
 centos 5.1.1 <br>
 apache 2.2.3 <br> 
 php 5.1.6 <br>
-xdebug 2.0.0 <br>
+xdebug 2.1.0 <br>
 - xdebug.idekey=1<br>
 - xdebug.remote_port=9001<br>
 
@@ -30,11 +30,11 @@ cd <hks-docker-folder>
 ```
 3. build docker image
 ```bash
-docker build -t httpd-php51:v0.1 -f Dockerfile .
+docker build -t httpd-php51:v0.3 -f Dockerfile .
 ```
-4. run docker container with image`httpd-php51:v0.1`
+4. run docker container with image`httpd-php51:v0.3`
 ```bash
-docker run -i -t -p 80:80 -p 443:443 -p 9001:9001 -v <docker-machine-source-folder>:/home/web --name <container-name> httpd-php51:v0.1
+docker run -i -t -p 80:80 -p 443:443 -p 9001:9001 -v <docker-machine-source-folder>:/home/web --name <container-name> httpd-php51:v0.3
 ```
 5. Done. use docker build dev environment so very easy! <br>
 Let's view container.
