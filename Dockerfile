@@ -50,6 +50,7 @@ FROM centos:5
     
     COPY vhost.conf /etc/httpd/conf.d/vhost.conf
     
+	RUN echo "extension=json.so" >> /etc/php.d/json.ini
     RUN echo "zend_extension=/usr/lib64/php/modules/xdebug.so" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.idekey=1" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_autostart=1" >> /etc/php.d/xdebug.ini
