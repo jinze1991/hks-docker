@@ -61,6 +61,7 @@ FROM centos:5
     RUN echo "xdebug.remote_connect_back = on" >> /etc/php.d/xdebug.ini
     RUN echo "xdebug.remote_log=/var/log/httpd/error_log" >> /etc/php.d/xdebug.ini
     RUN echo "AddType application/x-httpd-php .html .htm" >> /etc/httpd/conf/httpd.conf
+	RUN echo "AddDefaultCharset EUC-KR" >> /etc/httpd/conf/httpd.conf
     RUN sed -i '512d' /etc/httpd/conf.d/vhost.conf
     RUN service httpd start
     RUN echo "service httpd start" >> /start.sh
